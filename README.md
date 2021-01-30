@@ -22,10 +22,11 @@ At a first glance we can observe that Spotify has "packed playlists" and "person
     large music catalogues. Seems clear that, if the system is biased, the culture delivered won't be 'tailored' and choices will be limited by a number of 
     unneeded instruction. 
     
-    The experiment I have just completed is a preliminary work, useful to describe the state of art, according to this perspective. 
-    I strongly believe that there's no "right" way to look at newborn online systems, we should take a step back and discuss about how effective the model is. 
-    The importance of culture and the pleasure of discover can surely have benefits from their digitalization but we need to start questioning about the way systems
-    are operating and highlight limits to propose different ones. 
+    The experiment I have just completed is a preliminary work, useful to describe the state of art, according to this perspective.
+    Data science and machine learning gave us great opportunities in cultural fields but we can't just limit ourselves to observe these newborn systems. We should 
+    take a step back and discuss about the alternative models and their possible impact. I strongly believe in the 'democratization' carried by the net revolution,
+    in terms of cultural education the removal of geographical limits is priceless. Trying to 'predict the feel' that a cultural product can give to a user 
+    can generate an unfair system. 
     
     This preliminary research gets empirical foundations for theorical assumptions, showing that Spotify's model tend to cycle back and forth the same clusters.
     
