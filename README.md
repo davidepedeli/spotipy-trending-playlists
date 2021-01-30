@@ -27,7 +27,8 @@ At a first glance we can observe that Spotify has "packed playlists" and "person
     take a step back and discuss about the alternative models and their possible impact. I strongly believe in the 'democratization' carried by the net revolution,
     in terms of cultural education the removal of geographical limits is priceless. Trying to 'predict the feel' that a cultural product can give to a user 
     can generate an unfair system. So my interest is to find a system that doesn't rely on compex analysis of standardized parameters, making the machine learn and
-    analyze only that few parameters that would make it able to create . In other words, train him to the perfect sequence of songs. 
+    analyze only that few parameters that would make it able to chain contents. In other words, train it to build sequence of songs based on user's statements and 
+    in-depth song analysis. 
     
     But, to be able to do that we first need to demonstrate this trend and measure how reliable these parameters are. 
     
