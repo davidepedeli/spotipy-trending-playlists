@@ -1,0 +1,107 @@
+# Get auth token and request playlists 
+
+import os 
+import sys 
+import spotipy 
+import json 
+import spotipy.util as util 
+from json.decoder import JSONDecodeError
+
+# Get Username From Terminal 
+username = sys.argv [1]
+
+
+  # USRID: store your userID from profile for further use 
+  # CID: store your client ID from the API for further use 
+  # SECRET: store your client Secret from the API for further use 
+
+# Generate token 
+try: 
+    token = util.prompt_for_user_token(username)
+except: 
+    os.remove(f".cache-{username}")
+    token = util.prompt_for_user_token(username)
+
+#Create Object 
+sp = spotipy.Spotify(auth=token)
+
+playlists = sp.user_playlist ('spotify')
+
+    # Running this code we will obtain the list (over 1400 items) of Spotify's playlists
+    # No need to sort them manually by 'most popular', this is a default spotipy setting
+    
+# Get first ten playlists 
+
+ ## Note that line 36 is not necessary, I just wanted to display an alternative way to get token.
+spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='YOUR_CLIENT_ID', client_secret='CLIENT_SECRET'))
+
+playlists = spotify.user_playlists('spotify', limit=10, offset=0)
+while playlists:
+    for i, playlist in enumerate(playlists['items']):
+        print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))
+    else:
+        playlists = None
+
+
+      # With the next code we can loop through every track in playlist (or playlists creating a dictionary) and get info. 
+      
+        import spotipy 
+        import sys
+        from spotipy.oauth2 import SpotifyClientCredentials
+        import pandas as pd 
+        import time
+
+        playlist_creator = "User_ID"
+        playlist_id = "Playlist_ID" 
+
+        def analyze_playlist(creator, playlist_id):
+
+            # Create empty dataframe
+            playlist_features_list = ["artist", "album", "track_name", "track_id", 
+                                     "danceability", "energy", "key", "loudness", "mode", "speechiness",
+                                     "instrumentalness", "liveness", "valence", "tempo", "duration_ms", "time_signature"]
+            playlist_df = pd.DataFrame(columns = playlist_features_list)
+
+            # Create empty dict
+            playlist_features = {}
+
+            # Loop through every track in the playlist, extract features and append the features to the playlist df
+            playlist = spotify.user_playlist_tracks(creator, playlist_id)["items"]
+            for track in playlist:
+                # Get metadata
+                playlist_features["artist"] = track["track"]["album"]["artists"][0]["name"]
+                playlist_features["album"] = track["track"]["album"]["name"]
+                playlist_features["track_name"] = track["track"]["name"]
+                playlist_features["track_id"] = track["track"]["id"]
+                # Get audio features
+                audio_features = spotify.audio_features(playlist_features["track_id"])[0]
+                for feature in playlist_features_list[4:]:
+                    playlist_features[feature] = audio_features[feature]
+
+                # Concat the dfs
+                track_df = pd.DataFrame(playlist_features, index = [0])
+                playlist_df = pd.concat([playlist_df, track_df], ignore_index = True)
+
+            return playlist_df
+        playlist_df = analyze_playlist(playlist_creator, playlist_id)
+
+
+        playlist_df.to_csv("filename.csv", index = False)
+
+
+     #Last, to display a cleaner csv file 
+        files = glob.glob("/Users/Davide/Data/*.csv") 
+        df = pd.concat((pd.read_csv(f, header = 0) for f in files))
+        df_deduplicated = df.drop_duplicates()
+        columns_to_drop = ['album', 'loudness', 'liveness', 'valence', 'duration_ms', 'time_signature']
+        df_deduplicated.drop(columns_to_drop, axis=1,inplace=True)
+        df_deduplicated.to_csv("Data.csv")
+
+    
+    # At this point I had a complete list of 647 items (22 were duplicates) with all the relative features info. 
+    
+    # To display data I preferred to use an online tool called 'organizeyourmusic', as its graph was the most effective representation.
+    # Results for this research are displayed in 'Results' file. 
+
+
+
