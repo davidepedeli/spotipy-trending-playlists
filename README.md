@@ -26,7 +26,10 @@ At a first glance we can observe that Spotify has "packed playlists" and "person
     Data science and machine learning gave us great opportunities in cultural fields but we can't just limit ourselves to observe these newborn systems. We should 
     take a step back and discuss about the alternative models and their possible impact. I strongly believe in the 'democratization' carried by the net revolution,
     in terms of cultural education the removal of geographical limits is priceless. Trying to 'predict the feel' that a cultural product can give to a user 
-    can generate an unfair system. 
+    can generate an unfair system. So my interest is to find a system that doesn't rely on compex analysis of standardized parameters, making the machine learn and
+    analyze only that few parameters that would make it able to create . In other words, train him to the perfect sequence of songs. 
+    
+    But, to be able to do that we first need to demonstrate this trend and measure how reliable these parameters are. 
     
     This preliminary research gets empirical foundations for theorical assumptions, showing that Spotify's model tend to cycle back and forth the same clusters.
     
